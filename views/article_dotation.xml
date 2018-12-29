@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="article_form_view">
+            <field name="name">article.form.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@name='options']" position="inside">
+                    <div>
+                        <field name="dotation_ok"/>
+                        <label for="dotation_ok"/>
+                    </div>
+                </xpath>
+
+
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="article_dotation_action">
+            <field name="name">Article Dotation disponible</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+
+        <menuitem id="id_gestion_dotation" name="Gestion De Dotation"/>
+        <menuitem id="id_gestion_dotation_gauche" name="Dotation" parent="id_gestion_dotation"/>
+        <menuitem id="id_Article_dotation" name="article dotation"
+                  parent="id_gestion_dotation_gauche"
+                  action="article_dotation_action"/>
+    </data>
+</odoo>

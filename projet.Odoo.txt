@@ -1,0 +1,42 @@
+system de la gestion des dotation . inherit article de Odoo on ajoute un cahmpe boolean pour
+destingue article de dotation (on ajoute avec peut etre vendu et peut etre achete)
+
+on travaille avec les varriante d'article !!!
+
+employer (hr.employe) dependss grh
+
+creer une decahrge pour chaque employee (employer, dotation ,(etat=brouillon,valide)).
+        |
+        |
+ligne_decharge (dotation , qtt,decharge One2many)
+
+rapport de ligne_de_decharge() model  il y'en a plein
+
+wizrd !
+
+les droits d'acces .
+
+(groupe de gestion d'inventaire)
+    gestionnaire peut faire tous
+    utilisateur il peut juste consulter et modifer les article
+
+ (emplyee)
+    gestionnaire peut faire tous
+    fonctionnaire il peut  consulter et modifer les article et creer
+    employee peut rien voire .
+   la validation Gestionnaire
+
+   applique les droit d'acces pour les ligne .
+
+  categorie :
+
+                   Accesoire Parent
+     materiel                          numerique
+
+ protection de corps                    orinateur
+ protection de tete                     telephone
+
+
+
+
+
