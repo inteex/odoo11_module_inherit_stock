@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="decharge_form_view">
+            <field name="name">decharge.form.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Decharges">
+                        <div>
+                            <field name="decharge_ids"/>
+                        </div>
+                    </page>
+                </notebook>
+
+
+            </field>
+        </record>
+		 <record model="ir.ui.view" id="decharge_form_view2">
+            <field name="name">decharge.form.view</field>
+            <field name="model">decharge</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+
+                <form string="decharge">
+
+					<header>
+						<field name="etat" widget="statusbar" statusbar_visible="b,v" clickable="1"/>
+					</header>
+					<sheet>
+                        <group>
+							<field name="employer_id"/>
+                    		<field name="ligne_decharge_ids"/>
+						</group>
+				 	</sheet>
+				</form>
+            </field>
+        </record>
+	<record model="ir.ui.view" id="decharge_tree">
+			<field name="name">decharge.tree.view</field>
+			<field name="model">decharge</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Decharge">
+					<field name="employer_id"/>
+                    <field name="ligne_decharge_ids"/>
+                    <field name="etat"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="decharge_action">
+			<field name="name">Decharge</field>
+			<field name="res_model">decharge</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="decharge_tree"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create"> créer une decharge</p>
+			</field>
+		</record>
+
+        <menuitem id="id_decharge" name="decharge"
+                  parent="id_gestion_dotation_gauche"
+                  action="decharge_action"/>
+    </data>
+</odoo>

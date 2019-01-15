@@ -9,7 +9,7 @@
 
                 <xpath expr="//div[@name='options']" position="inside">
                     <div>
-                        <field name="dotation_ok"/>
+                        <field name="dotation_ok" domain="[('isdotation','=','True')]"/>
                         <label for="dotation_ok"/>
                     </div>
                 </xpath>
@@ -27,8 +27,25 @@
 
         <menuitem id="id_gestion_dotation" name="Gestion De Dotation"/>
         <menuitem id="id_gestion_dotation_gauche" name="Dotation" parent="id_gestion_dotation"/>
-        <menuitem id="id_Article_dotation" name="article dotation"
+        <menuitem id="id_Article_dotation" name="Articles"
                   parent="id_gestion_dotation_gauche"
                   action="article_dotation_action"/>
+        <menuitem id="accessoir" name="accessoir" parent="id_gestion_dotation_gauche" action=""/>
+
+        <menuitem id="accessoir_materiel" name="materiel" parent="accessoir" action=""/>
+
+        <menuitem id="accessoir_numerique" name="nurmerique" parent="accessoir" action=""/>
+
+        <menuitem id="materiel_protection_corp" name="protection de corp" parent="accessoir_materiel"
+                  action=""/>
+
+        <menuitem id="materiel_protection_tete" name="protection de tête" parent="accessoir_materiel"
+                  action=""/>
+
+        <menuitem id="numerique_ordinateur" name="ordinateur" parent="accessoir_numerique"
+                  action=""/>
+
+        <menuitem id="numerique_tel" name="téléphone portable" parent="accessoir_numerique"
+                  action=""/>
     </data>
 </odoo>

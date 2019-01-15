@@ -5,5 +5,5 @@ from odoo import fields, models
 class Article_dotation(models.Model):
     _inherit = 'product.template'
 
-    dotation_ok = fields.Boolean(string="dotation")
+    dotation_ok = fields.Boolean(string="Dotation")
 

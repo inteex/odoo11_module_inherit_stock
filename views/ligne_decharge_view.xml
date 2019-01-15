@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<odoo>
+
+    <data>
+        <record id="ligne_form_view" model="ir.ui.view">
+            <field name="name">ligne.form.view</field>
+            <field name="model">ligne_decharge</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+
+                <form string="ligne">
+			    <sheet>
+                        <group>
+                            <field name="article" domain="[('dotation_ok','=','True')]"/>
+                            <field name="quantite"/>
+                            <field name="decharge_id"/>
+                        </group>
+			    </sheet>
+		        </form>
+
+	        </field>
+	    </record>
+        <record id="ligne_view_tree" model="ir.ui.view">
+            <field name="name">ligne.view.tree</field>
+            <field name="model">ligne_decharge</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+
+                <tree string="ligne">
+                    <field name="article" domain="[('dotation_ok','=','True')]"/>
+                    <field name="decharge_id"/>
+                    <field name="quantite"/>
+                </tree>
+            </field>
+
+        </record>
+        <record id="action_ligne" model="ir.actions.act_window">
+            <field name="name">ligne</field>
+            <field name="res_model">ligne_decharge</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+</data>
+
+</odoo>

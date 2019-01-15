@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <report id="report_decharge"
+                string="Decharge"
+                model="decharge"
+                report_type="qweb-pdf"
+                name="GestionDotation.report_decharge_template"
+        />
+        <record id="paperformat_specifique" model="report.paperformat">
+            <field name="name">Decharge Format</field>
+            <field name="default" eval="False"/>
+            <field name="format">custom</field>
+            <field name="page_height">210</field>
+            <field name="page_width">290</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35</field>
+            <field name="margin_bottom">35</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="GestionDotation.report_decharge" model="ir.actions.report">
+            <field name="paperformat_id" ref="GestionDotation.paperformat_specifique"></field>
+        </record>
+
+        <template id="report_decharge_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div>
+                            <h1 align="center" style="padding-top:10%">Decharge</h1>
+                            <hr/>
+                            <div class="header" style="border-bottom: 2px solid black">
+                                <h3>
+                                    <strong>Employe :</strong>
+                                    <span t-field="o.employer_id"/>
+                                </h3>
+                                <h3>
+                                    <strong>Etat decharge</strong>
+                                    <span t-field="o.etat"/>
+                                </h3>
+                                <h3>
+                                    <strong>Ligne Décharge:</strong>
+                                </h3>
+                            </div>
+                            <hr/>
+                            <div class='table table-condensed'>
+                                <table class="table table-condensed table-bordered" style="width: 100%">
+                                    <thead>
+                                        <tr style="background-color:lightgray;">
+                                            <th>N°decharge</th>
+                                            <th>Nom article</th>
+                                            <th class="text-right">quantite</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.ligne_decharge_ids" t-as="ld">
+                                            <tr>
+                                                <td class="text-center">
+                                                    <span t-field="ld.decharge_id"/>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span t-esc="ld.article.name"/>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span t-esc="ld.quantite"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <hr/>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+
+        </template>
+    </data>
+</odoo>

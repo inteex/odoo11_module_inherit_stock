@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="nbr_dotation_form_view">
+            <field name="name">article.form.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <button name="toggle_active" position="after">
+                    <button
+                        class="oe_stat_button"
+                        type="action"
+                        name="%(action_ligne)d"
+                        icon="fa-bolt">
+                        <field name="nbr_decharge" widget="statinfo"/>
+                    </button>
+                </button>
+
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="employer_action">
+            <field name="name">decharge des clients</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem id="nbr_dotation" name="Employers"
+                  parent="id_gestion_dotation_gauche"
+                  action="employer_action"/>
+    </data>
+</odoo>
